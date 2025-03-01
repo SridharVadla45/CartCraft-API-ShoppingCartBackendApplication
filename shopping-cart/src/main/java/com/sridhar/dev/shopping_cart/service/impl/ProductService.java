@@ -14,11 +14,15 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 public class ProductService implements IProductService {
 
     private final ProductRepository productRepository;
     private final CategoryRepository categoryRepository;
+
+    public ProductService(ProductRepository productRepository, CategoryRepository categoryRepository) {
+        this.productRepository = productRepository;
+        this.categoryRepository = categoryRepository;
+    }
 
 
     @Override
@@ -68,9 +72,9 @@ public class ProductService implements IProductService {
     }
 
 
-    public List<Product> getProductsByCategory(Category category) {
-        return productRepository.findByCategory(category);
-    }
+//    public List<Product> getProductsByCategory(Category category) {
+//        return productRepository.findByCategory(category);
+//    }
 
 
     public List<Product> getProductsByBrand(String brand) {
@@ -78,9 +82,9 @@ public class ProductService implements IProductService {
     }
 
 
-    public List<Product> getProductsByCategoryAndBrand(Category category, String brand) {
-        return productRepository.findByBrandAndCategory(category, brand);
-    }
+//    public List<Product> getProductsByCategoryAndBrand(Category category, String brand) {
+//        return productRepository.findByBrandAndCategory(category, brand);
+//    }
 
 
     public List<Product> searchProducts(String keyword) {

@@ -12,8 +12,8 @@ public interface IProductService {
     Product createProduct(ProductDto product);
     Product updateProduct(Long id, ProductDto product);
     void deleteProduct(Long id);
-    List<Product> getProductsByCategory(Category category);
+//    List<Product> getProductsByCategory(Category category);
     List<Product> getProductsByBrand(String brand);
-    List<Product> getProductsByCategoryAndBrand(Category category, String brand);
+//    List<Product> getProductsByCategoryAndBrand(Category category, String brand);
     List<Product> searchProducts(String keyword);
 }
