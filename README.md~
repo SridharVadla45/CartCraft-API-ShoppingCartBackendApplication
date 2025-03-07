@@ -1,4 +1,7 @@
 # Shopping Cart Backend
 - This is a ecommerce shopping cart backend
-## ERD
-![img.png](shopping-cart/assets/img.png)
+
+# tasks pending for this project:
+   1. security implementation
+   2. unit test implementation
+   3. containerization
