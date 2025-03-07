@@ -1,6 +1,6 @@
-server:
-  port: 8081
 spring:
+  application:
+    name: cart-craft
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/
@@ -10,7 +10,17 @@ spring:
     show-sql: true
     hibernate:
       format_sql: true
-      ddl-auto: update
-  application:
-    context-path: /api/v1
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    ddl-auto: update
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 5MB
 
+server:
+  port: 8081
+
+api:
+  prefix: /api/v1
