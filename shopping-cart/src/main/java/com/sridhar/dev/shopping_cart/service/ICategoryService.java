@@ -5,15 +5,16 @@ import com.sridhar.dev.shopping_cart.entity.Category;
 import java.util.List;
 
 public interface ICategoryService {
+    Category getCategoryById(Long id);
 
-    void createCategory(Category category);
+    Category getCategoryByName(String name);
 
-    void deleteCategory(Long id);
+    List<Category> getAllCategories();
 
-    void updateCategory(Long id, Category category);
+    Category addCategory(Category category);
 
-    Category getCategory(Long id);
+    Category updateCategory(Category category, Long id);
 
-    List<Category> getCategories();
+    void deleteCategoryById(Long id);
 
 }

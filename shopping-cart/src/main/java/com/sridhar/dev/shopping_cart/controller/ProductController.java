@@ -1,11 +1,8 @@
 package com.sridhar.dev.shopping_cart.controller;
 
 import com.sridhar.dev.shopping_cart.dto.ProductDto;
-import com.sridhar.dev.shopping_cart.entity.Category;
 import com.sridhar.dev.shopping_cart.entity.Product;
 import com.sridhar.dev.shopping_cart.service.impl.ProductService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +15,7 @@ import java.util.List;
 
 public class ProductController {
 
-    @Autowired
+
     private final ProductService productService;
 
     public ProductController(ProductService productService) {
@@ -28,7 +25,7 @@ public class ProductController {
     // get products
     @GetMapping
     public ResponseEntity<Object> getProducts() {
-        List<Product> products = productService.getProducts();
+        List<ProductDto> products = productService.getProducts();
         if (products.isEmpty()) return ResponseEntity.noContent().build();
         return ResponseEntity.ok(products);
     }
@@ -36,21 +33,21 @@ public class ProductController {
     // get product
     @GetMapping("/{id}")
     public ResponseEntity<Object> getProduct(@PathVariable Long id) {
-        Product product = productService.getProduct(id);
+        ProductDto product = productService.getProduct(id);
         return ResponseEntity.ok(product);
     }
 
     // create product
     @PostMapping
     public ResponseEntity<Object> createProduct(@RequestBody ProductDto product) {
-        Product newProduct = productService.createProduct(product);
+        ProductDto newProduct = productService.createProduct(product);
         return ResponseEntity.status(HttpStatus.CREATED).body(newProduct);
     }
 
     // update product
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateProduct(@PathVariable Long id, @RequestBody ProductDto product) {
-        Product updatedProduct = productService.updateProduct(id, product);
+        ProductDto updatedProduct = productService.updateProduct(id, product);
         return ResponseEntity.ok(updatedProduct);
     }
 

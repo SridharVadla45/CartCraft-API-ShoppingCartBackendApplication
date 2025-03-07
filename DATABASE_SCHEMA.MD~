@@ -1,0 +1,47 @@
+# Ecommerce App Database Schema
+
+## Tables
+
+### User_roles
+
+| Column           | Data Type        | Constraints      | Notes                                  |
+|------------------|------------------|-------------------|----------------------------------------|
+| Id               | INT              | PRIMARY KEY       |                                        |
+| Role_name        | VARCHAR          |                   | (Admin / Customer)                     |
+| Created_at       | TIMESTAMP        |                   |                                        |
+| Updated_at       | TIMESTAMP        | NULL              |                                        |
+
+### Users
+
+| Column         | Data Type        | Constraints      | Notes                                      |
+|----------------|------------------|-------------------|--------------------------------------------|
+| Id             | INT              | PRIMARY KEY       |                                            |
+| Role_id        | INT              | FOREIGN KEY       | (References User_roles.Id) (admin/customer) |
+| Full_name      | VARCHAR          |                   |                                            |
+| Email          | VARCHAR          |                   |                                            |
+| Password       | VARCHAR          |                   |                                            |
+| Phone_number   | VARCHAR          |                   |                                            |
+| Status         | ENUM             |                   | (active/inactive/block)                    |
+
+### Categories
+
+| Column         | Data Type        | Constraints      | Notes                                       |
+|----------------|------------------|-------------------|---------------------------------------------|
+| id             | INT              | PRIMARY KEY       |                                             |
+| Category_name  | VARCHAR          |                   |                                             |
+| Url_slug       | TEXT             | UNIQUE            | (cat-name)                                  |
+| Parent_cat_id  | INT              |                   |                                             |
+| Status         | ENUM             |                   | (active / inactive)                         |
+
+### Products
+
+| Column          | Data Type        | Constraints      | Notes                                         |
+|-----------------|------------------|-------------------|-----------------------------------------------|
+| Id              | INT              | PRIMARY KEY       |                                               |
+| Product_name    | VARCHAR          |                   |                                               |
+| Url_slug        | TEXT             | UNIQUE            |                                               |
+| Cat_id          | INT              | FOREIGN KEY       | (References Categories.id)                   |
+| Description     | TEXT             |                   |                                               |
+| Price           | FLOAT(10, 2)     |                   |                                               |
+| Stock_quantity  | INT              |                   |                                               |
+| Status          | ENUM
